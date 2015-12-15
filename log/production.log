@@ -1,0 +1,14 @@
+D, [2015-12-15T10:20:06.576357 #19591] DEBUG -- :   [1m[36m (9.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+D, [2015-12-15T10:20:06.576929 #19591] DEBUG -- :   [1m[35m (0.2ms)[0m  select sqlite_version(*)
+D, [2015-12-15T10:20:06.586347 #19591] DEBUG -- :   [1m[36m (8.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+D, [2015-12-15T10:20:06.587597 #19591] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+I, [2015-12-15T10:20:06.597681 #19591]  INFO -- : Migrating to CreateUsers (20151215084628)
+D, [2015-12-15T10:20:06.598627 #19591] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2015-12-15T10:20:06.601360 #19591] DEBUG -- :   [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+D, [2015-12-15T10:20:06.623845 #19591] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151215084628"]]
+D, [2015-12-15T10:20:06.634919 #19591] DEBUG -- :   [1m[35m (10.7ms)[0m  commit transaction
+I, [2015-12-15T10:20:06.635120 #19591]  INFO -- : Migrating to CreatePosts (20151215084646)
+D, [2015-12-15T10:20:06.635866 #19591] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2015-12-15T10:20:06.637642 #19591] DEBUG -- :   [1m[35m (1.0ms)[0m  ALTER TABLE "posts" ADD "users_id" integer
+E, [2015-12-15T10:20:06.637728 #19591] ERROR -- : SQLite3::SQLException: no such table: posts: ALTER TABLE "posts" ADD "users_id" integer
+D, [2015-12-15T10:20:06.637998 #19591] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
