@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
     get 'new', to: 'users#new'
   
-    get 'remove', to: 'posts#remove'
+    get 'remove_post', to: 'posts#remove_post'
     
   end
 end
