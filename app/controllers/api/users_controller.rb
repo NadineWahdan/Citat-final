@@ -10,7 +10,7 @@ before_action :authenticate_user! , only: [:show,:follower]
         @user = User.new
         end
 
-    def create
+    def create_user
     @user = User.new(user_params)
     
     if @user.save
@@ -21,7 +21,7 @@ before_action :authenticate_user! , only: [:show,:follower]
     end
 
   def user_params
-    params.require(:user).permit(:facebook, :password)
+    params.require(:user).permit(:first_name, :last_name, :date_of_brth, :gender, :uid )
   end
   
 end
