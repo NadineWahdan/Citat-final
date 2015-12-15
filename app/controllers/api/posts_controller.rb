@@ -1,25 +1,31 @@
-class PostsController <  Api::BaseController
+class Api::PostsController <  Api::BaseController
 before_action:authenicate_post!, only: [ :show]
-        def all_posts
-            @posts = Post.all
-            respond_with @posts
+    def all_posts
+        @posts = Post.where(user: params[:id])
+        @postses = []
+        @posts.each do |f|
+            @postses << Post.find(f.body)
         end
-        
-        def show
-            @post= Post.find(params[:id])
-            respond_with @post
-        end
-
+        respond_with @followers  
+    end
 
 
       def remove
-            Post.find(params[:id]).destroy
-            redirect_to :action => 'post.all'
+            Post.where(user: params[:id], body: params[:text]).destroy_all
       end
 
 
-     def create
-            @posts = Post.new(post_params)
+     def create_post
+            if Post.create(post_params)
+                respond_with 201
+            else
+                respond_with 400  
+            end
+                
      end
-        
+       
+     def post_params
+        params.permit(:body)
+     end
+     
 end

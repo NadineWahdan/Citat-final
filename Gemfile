@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rabl'
+gem 'responders', '~> 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
