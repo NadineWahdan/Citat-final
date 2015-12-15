@@ -7,6 +7,7 @@ before_action:authenicate_post!, only: [ :show]
         
         def show
             @post= Post.find(params[:id])
+            respond_with @post
         end
 
 
